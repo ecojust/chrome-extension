@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Gitee-Issues-Tool",
+  "description": "Management issues",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon/logo.png",
+    "default_title": "Gitee-Issues-Tool",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "128": "icon/logo.png",
+    "16": "icon/logo.png",
+    "48": "icon/logo.png"
+  },
+  "permissions": [
+    "tabs",
+    "contextMenus",
+    "cookies",
+    "<all_urls>",
+    "https://*/",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "host_permission": ["https://*/"],
+  "background": {
+    "scripts": ["./background.js"]
+  },
+  "chrome_url_overrides": {
+  },
+  "content_scripts": [
+    {
+      "js": ["./js/jquery.min.js","./js/axios.min.js","./js/filesaver.min.js","./js/exceljs.min.js","./js/vue.js","./js/tool.js", "./js/index.js"],
+      "css": ["./css/index.css"],
+      "matches": ["https://*/*", "http://*/*"]
+    }
+  ]
+}

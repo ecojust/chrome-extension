@@ -1,0 +1,11 @@
+.block{
+    width:300px;
+    height:200px;
+    /* border:1px solid red; */
+    border-radius:4px;
+    box-shadow: 0 0 4px 4px gray;
+    padding:4px;
+    overflow: scroll;
+    display:inline-block;
+    margin:5px;
+}

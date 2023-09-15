@@ -1,0 +1,8 @@
+#Gitee-Issues-Tool{
+    position:fixed;
+    width:100%;
+    z-index: 999999999999;
+    top:0;
+    left:0;
+    background:rgba(35, 163, 178, 0.7)
+}

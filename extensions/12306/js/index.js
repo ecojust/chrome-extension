@@ -108,6 +108,19 @@ async function kyfw() {
     秒，防止12306检测到脚本
     </span>
 
+
+    &nbsp;&nbsp;
+    &nbsp;&nbsp;
+    <el-statistic
+              :value="deadline3"
+              time-indices
+              format="HH:mm:ss"
+              title="下一轮采集"
+            >
+              <template slot="suffix">
+              </template>
+            </el-statistic>
+
   </div>
 
 
@@ -152,7 +165,8 @@ async function kyfw() {
       value1: "11:40",
       num1: 5,
       num2: 50,
-      num3: 300,
+      num3: 350,
+      deadline3: Date.now() + 0,
     },
     created() {},
     mounted() {
@@ -285,8 +299,11 @@ async function kyfw() {
               this.update();
               //[3,10]
               await window.XHRTool.sleep(3000 + 7000 * Math.random());
+              this.update();
+
               if (step % this.num2 == 0) {
-                await window.XHRTool.sleep(this.num3 * 1000);
+                (this.deadline3 = Date.now() + 1000 * this.num3),
+                  await window.XHRTool.sleep(this.num3 * 1000);
               }
               if (car.to == tocode) {
                 break;

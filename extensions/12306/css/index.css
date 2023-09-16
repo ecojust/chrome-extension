@@ -19,6 +19,18 @@
     width: 130px;
   }
 
+  #kyfw-extension .header-dom .el-statistic{
+    display:inline-block;
+    width:90px;
+    vertical-align: top;
+
+  }
+  #kyfw-extension .header-dom .el-statistic .head{
+color:greenyellow;
+  }
+  #kyfw-extension .header-dom .el-statistic .number{
+color:greenyellow;
+  }
   .header-dom-start-time {
     z-index: 9999999 !important;
   }

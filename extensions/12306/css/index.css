@@ -1,34 +1,69 @@
-#kyfw-extension {
-    position: fixed;
-    width: 100%;
-    height: 100%;
+/* @import url("https://unpkg.com/element-ui/lib/theme-chalk/index.css"); */
 
-    z-index: 2000;
-    top: 0;
+#kyfw-extension {
+    background: rgba(102, 51, 153, 0.9);
     left: 0;
-    background: rgba(35,163,178,0.7);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99999;
+    height: 100%;
+    transition: left 0.5s;
+  }
+  #kyfw-extension .header-dom {
+    height: 40px;
+    padding:10px;
+  }
+
+  #kyfw-extension .header-dom .el-input-number {
+    width: 130px;
+  }
+
+  .header-dom-start-time {
+    z-index: 9999999 !important;
+  }
+
+
+  #kyfw-extension .header-dom .el-input-number >span {
+    /* height: 38px; */
+    /* line-height: 38px; */
+    padding:13px 0px;
+  }
+
+
+
+  #kyfw-extension .header-dom .kyfw-extension-logo {
+   position:absolute;
+   right:10px;
+   top:10px;
+   border-radius: 50%;
+   cursor:pointer;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  }
+  #kyfw-extension .header-dom .isMargin {
+    margin-right: -60px;
   }
   #kyfw-extension .result {
     background: #2752d2;
-    height: calc(100% - 120px);
-    transition: all 0.3s;
+    max-height: calc(100% - 60px);
     overflow: scroll;
+    transition: all 0.3s;
   }
   #kyfw-extension .result .item {
-    padding: 10px;
-    display: inline-block;
-    width: 200px;
-    margin: 10px;
-    white-space: nowrap;
-    vertical-align: top;
-    position: relative;
     border-radius: 4px;
     box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 200px;
   }
   #kyfw-extension .result .item .no {
-    width: 100%;
-    text-align: center;
     margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
   }
   #kyfw-extension .result .item .t-line {
     height: 300px;
@@ -36,8 +71,8 @@
     padding: 5px;
   }
   #kyfw-extension .result .item .t-line .el-card__body {
-    padding: 5px;
     font-size: 12px;
+    padding: 5px;
   }
   #kyfw-extension .result-hide {
     height: 0;

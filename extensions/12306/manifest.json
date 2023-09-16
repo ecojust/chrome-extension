@@ -1,11 +1,11 @@
 {
   "manifest_version": 2,
-  "name": "Gitee-Issues-Tool",
-  "description": "Management issues",
+  "name": "12306",
+  "description": "ticket remind",
   "version": "1.0",
   "browser_action": {
     "default_icon": "icon/logo.png",
-    "default_title": "Gitee-Issues-Tool",
+    "default_title": "12306",
     "default_popup": "popup.html"
   },
   "icons": {
@@ -30,8 +30,8 @@
   },
   "content_scripts": [
     {
-      "js": ["./js/jquery.min.js","./js/axios.min.js","./js/filesaver.min.js","./js/exceljs.min.js","./js/vue.js","./js/tool.js", "./js/index.js"],
-      "css": ["./css/index.css"],
+      "js": ["./js/jquery.min.js","./js/axios.min.js","./js/citycode.js","./js/filesaver.min.js","./js/exceljs.min.js","./js/vue.js","./js/element.js","./js/tool.js", "./js/index.js"],
+      "css": ["./css/index.css","./css/element.css"],
       "matches": ["https://*/*", "http://*/*"]
     }
   ]

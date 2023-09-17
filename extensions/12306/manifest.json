@@ -32,7 +32,7 @@
     {
       "js": ["./js/jquery.min.js","./js/axios.min.js","./js/citycode.js","./js/filesaver.min.js","./js/exceljs.min.js","./js/vue.js","./js/element.js","./js/tool.js", "./js/index.js"],
       "css": ["./css/index.css","./css/element.css"],
-      "matches": ["https://*/*", "http://*/*"]
+      "matches": ["https://kyfw.12306.cn/*"]
     }
   ]
 }

@@ -88,6 +88,15 @@ async function kyfw() {
 
     <el-button type="danger" @click="startCollect(1000)" >重置数据且开始采集</el-button>
 
+
+
+    <el-button type="success" @click="pause" >Pause</el-button>
+
+
+
+
+    
+
     &nbsp;&nbsp;
     <span>开始时间:</span>
     <el-time-picker
@@ -154,6 +163,10 @@ async function kyfw() {
 `;
   hifiniMusicPlugin.innerHTML = hifiniMusicPluginHtml;
   document.body.appendChild(hifiniMusicPlugin);
+  const mp3url = `${chrome.runtime.getURL("audio/y2090.mp3")}`;
+
+  var music = new Audio(mp3url);
+  music.loop = true;
 
   var app = new Vue({
     el: DOMID,
@@ -170,10 +183,14 @@ async function kyfw() {
     },
     created() {},
     mounted() {
+      console.log(mp3url);
       this.initdata();
       this.autoAnalysis();
     },
     methods: {
+      pause() {
+        music.pause();
+      },
       initdata() {
         var ticketremind = localStorage.getItem("ticketremind") || "[]";
         this.ticketremind = JSON.parse(ticketremind);
@@ -195,12 +212,31 @@ async function kyfw() {
       },
       update() {
         var ticketremind = localStorage.getItem("ticketremind") || "[]";
-        this.ticketremind = JSON.parse(ticketremind);
+        var data = JSON.parse(ticketremind);
+        console.log(data);
+
+        data.forEach((d) => {
+          if (d.stations) {
+            d.stations.forEach((s) => {
+              if (s.color && ["greenyellow", "orange"].includes(s.color)) {
+                music.play();
+              }
+            });
+          }
+        });
+        this.ticketremind = data;
       },
       async startCollect(interval = 1000) {
         localStorage.setItem("ticketremind", JSON.stringify([]));
         localStorage.setItem("ticketremind-time", this.value1);
         this.update();
+
+        var FROM = decodeURIComponent(
+          window.location.href.split("fs=")[1].split(",")[0]
+        );
+        var TO = decodeURIComponent(
+          window.location.href.split("ts=")[1].split(",")[0]
+        );
 
         var hm = this.value1.split(":");
         // return false;
@@ -242,7 +278,7 @@ async function kyfw() {
           var item = cars[i];
           // await this.gettimes(item.no, "2023-09-28", item.from, item.to);
           item.dom.querySelector(".train").querySelector("a").click(); //a click
-          await window.XHRTool.sleep(500);
+          await window.XHRTool.sleep(1000);
           var trs = item.dom
             .querySelector(".station")
             .querySelector(".station-bd")
@@ -258,6 +294,8 @@ async function kyfw() {
             });
           });
         }
+
+        cars = cars.filter((c) => c.stations[0].name.includes(FROM));
 
         var w = window.innerWidth - 100,
           h = window.innerHeight - 100;
@@ -519,6 +557,4 @@ async function kyfw() {
       },
     },
   });
-
-  console.log(window.location);
 }

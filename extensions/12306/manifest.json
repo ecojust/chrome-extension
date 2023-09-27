@@ -28,6 +28,7 @@
   },
   "chrome_url_overrides": {
   },
+  "web_accessible_resources": ["audio/y2090.mp3"],
   "content_scripts": [
     {
       "js": ["./js/jquery.min.js","./js/axios.min.js","./js/citycode.js","./js/filesaver.min.js","./js/exceljs.min.js","./js/vue.js","./js/element.js","./js/tool.js", "./js/index.js"],
